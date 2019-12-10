@@ -25,6 +25,17 @@ order = [1]
 tprice = 0;
 orderno = 2;
 
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
 function generateOrder(){
     alert('order generated successfully, Add items now :)')
     order.push(orderno)
@@ -60,7 +71,9 @@ function showOrders(){
         str+=`<tr>
         <td>${o.ono}</td>
         <td><button type="button" class="btn btn-success" onclick=editOrder(${o.ono}) data-dismiss="modal">Edit</button></td>
-        <td>Done</td>
+        <td>Done
+        <i class="fas fa-clock"></i>
+        </td>
         </tr>`
     })
     document.getElementById('orders').innerHTML = str
@@ -105,7 +118,7 @@ function showCartItems(ono){
         <th scope="row">${i+1}</th>
             <td>${c.name}</td>
             <td>${c.price}</td>
-            <td><button onclick=sub(${c.id},${ono})>-</button>${c.quantity}<button onclick=add(${c.id},${ono})>+</button></td>
+            <td><button onclick=sub(${c.id},${ono})>-</button>${c.quantity}<button onclick=add(${c.id},${ono})>+</button><button onclick=del(${c.id},${ono})>d</button></td>
         </tr>`
         ))
         str += `<tr>
@@ -156,6 +169,23 @@ function sub(id,ono){
     })
    
 }
+
+function del(id,ono){
+    orders.map(o=>{
+        if(o.ono == ono){
+            
+            o.cart.map(c=>{
+                if(c.id == id){
+                o.cart.remove(c)
+
+                }
+            })
+            showCartItems(ono)
+            updateCartValue(ono)
+        }
+    })
+}
+
 function updateCartValue(ono){
     orders.map(o=>{
         if(o.ono == ono){

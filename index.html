@@ -7,11 +7,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
     <title>CafeKarwaan</title>
     <script src="cart.js"></script>
   </head>
   <body onload="showItems(1)">
+
         <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 Cart <span id="cartValue" class="badge badge-light">0</span>
               </button>
@@ -71,7 +73,7 @@
                                               <tr>
                                                 <th scope="col">Orderno.</th>
                                                 <th scope="col">Edit</th>
-                                                <th scope="col">Done</th>
+                                                <th scope="col"><i class="fas fa-trash-alt"></i>Done</th>
                                               </tr>
                                             </thead>
                                             <tbody id="orders">
@@ -96,16 +98,7 @@
           </tr>
         </thead>
         <tbody id="items">
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          
         </tbody>
       </table>
 
